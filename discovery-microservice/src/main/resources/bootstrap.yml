@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: discovery
+  jmx: 
+    default-domain: com.sample.cloud.discovery
