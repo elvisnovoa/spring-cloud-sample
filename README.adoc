@@ -1,0 +1,29 @@
+= spring-cloud-sample
+
+A collection of RESTful services tied together using Spring Cloud. 
+
+You may run these applications in one of two ways. 
+
+1) Run each application using the embedded tomcat server. +
+2) Deploy the wars into two tomcat instances. One running the Gateway and Discovery apps, and the second running the other microservices.
+
+== Gateway Service
+
+To access services through the gateway, you must specify the service name and the URI (including root context path) 
+in the form http://hostname:port/{gateway-context}/{service-id}/{service-context}/{resource-uri} 
+
+For example, to call /uaa/token through the gateway, the url would be +
+http://hostname:port/api/uaa-service/uaa/oauth/token?grant_type=password&username=elvis&password=password
+
+== Oauth2 Service
+
+Simple implementation of an Oauth2 server using Spring Security Oauth2 and JDBC token store using HSQLDB. 
+
+Usage: +
+curl -X POST -H "Authorization: Basic ZWx2aXM6bm92b2E=" "http://hostname:port/uaa/oauth/token?grant_type=password&username=elvis&password=password"
+
+Where client id is 'elvis' and client secret is 'novoa'.
+
+== License
+This project is Open Source software released under the
+http://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].

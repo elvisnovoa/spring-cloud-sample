@@ -1,3 +1,9 @@
+spring:
+  profiles:
+    active: cloud-enabled # enable cloud registration
+  datasource:
+    platform: hsqldb # Enable In-Memory database  
+
 # Discovery Server Access
 eureka:
   client:
@@ -6,10 +12,9 @@ eureka:
   instance:
     instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
-# HTTP Server
 server:
-  port: 8080   # HTTP port for running in standalone mode
-  context-path: /api
+  port: 8082
+  context-path: /uaa
   
 ---
 
@@ -21,4 +26,5 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8080/discovery/eureka/
-  
+server:
+  port: 8081
