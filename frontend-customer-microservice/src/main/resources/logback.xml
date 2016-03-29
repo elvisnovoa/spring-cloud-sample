@@ -15,5 +15,5 @@
 	<logger name="com.sample" level="trace" additivity="false">
 		<appender-ref ref="stdout" />
 	</logger>
-	
+
 </configuration>

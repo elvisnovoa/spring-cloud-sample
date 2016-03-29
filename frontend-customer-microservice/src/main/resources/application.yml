@@ -1,8 +1,10 @@
 spring:
 #  profiles:
-#    active: cloud-enabled # enable cloud registration
+#    active: cloud-enabled,oauth2-enabled # enable cloud registration and/or oauth2 security
   datasource:
     platform: hsqldb # Enable In-Memory database  
+  jpa:
+    show-sql: true
 
 # Discovery Server Access
 eureka:
@@ -13,8 +15,8 @@ eureka:
     instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 server:
-  port: 8082
-  context-path: /uaa
+  port: 8083
+  context-path: /frontend-customers
   
 ---
 

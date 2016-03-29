@@ -46,5 +46,6 @@
 		<module>api-gateway-microservice</module>
 		<module>discovery-microservice</module>
 		<module>oauth2-microservice</module>
+		<module>frontend-customer-microservice</module>
 	</modules>
 </project>
