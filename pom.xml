@@ -65,5 +65,6 @@
 		<module>oauth2-microservice</module>
 		<module>frontend-customer-microservice</module>
 		<module>backend-account-microservice</module>
+		<module>composite-service</module>
 	</modules>
 </project>

@@ -1,0 +1,32 @@
+spring:
+#  profiles:
+#    active: oauth2-enabled # enable oauth2 security
+  datasource:
+    platform: hsqldb # Enable In-Memory database  
+  jpa:
+    show-sql: true
+
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/discovery/eureka/
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+server:
+  port: 8085
+  context-path: /composite
+  
+---
+
+spring:
+    profiles: tomcat 
+    
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/discovery/eureka/
+server:
+  port: 8081

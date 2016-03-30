@@ -72,14 +72,17 @@ curl -X POST -H 'Content-Type: application/json'
    "firstName": "Frodo", 
    "lastName": "Baggins", 
    "dateOfBirth": "2016-03-29" 
-}' "http://localhost:8083/frontend-customers/customers"
+}' 'http://localhost:8083/frontend-customers/customers'
 ```
 
 == Backend Account Service
 
-A single RESTController serving random accounts. Showcases the use of custom Media Types to handle API versions 
+A single RESTController serving random accounts. Showcases the use of custom Media Types to handle API versions
 and Springfox Swagger to document the service endpoints. In reality, this could be a wrapper of another service in
 the backend (ie. mainframe, middleware, appliance, etc).
+
+Disclaimer regarding API versioning: this is merely one way to do it and by no means "the right way" to do so. I try to avoid using /v1/ 
+in the URI to separate resource identification and representation, but that's entirely a personal preference.
 
 Swagger UI:
 http://localhost:8084/backend-accounts/documentation/swagger-ui.html
@@ -87,6 +90,18 @@ http://localhost:8084/backend-accounts/documentation/swagger-ui.html
 Usage:
 ```ruby
 curl -X GET --header 'Accept: application/vnd.sample.account.v1+json' 'http://localhost:8084/backend-accounts/'
+```
+
+== Composite Service
+
+Orchestration layer service that calls the Customers and Accounts services using the Discovery service and client-side load balancing.  
+
+Usage:
+```ruby
+curl -X POST -H 'Content-Type: application/json' -d '{
+    "id":1,
+    "includeAccounts":true
+}' 'http://localhost:8085/composite/loadCustomer'
 ```
 
 == License
