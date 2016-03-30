@@ -1,0 +1,8 @@
+# Spring properties
+spring:
+  application:
+    name: backendaccounts-service  # Service registers under this name
+  jmx: 
+    default-domain: com.sample.cloud.frontend.accounts
+encrypt:
+  failOnError: false

@@ -2,7 +2,13 @@
 
 A collection of RESTful services tied together using Spring Cloud. 
 
-This project is meant to serve as a showcase of Spring technologies like Cloud, Security, OAuth2 and Data Rest. 
+This project is meant to serve as a showcase of Spring technologies like Boot, Cloud, Security, OAuth2 and Data Rest. 
+
+Some features like Cloud and OAuth are disabled by default. To enable them, add the following https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html[Spring profiles]:
+
+. tomcat - configures the Discovery and Gateway apps to run on port 8080 and all others in port 8081.
+. cloud-enabled - loads the CloudConfig class to configure the Eureka client.
+. oauth2-enabled - loads security config classes with jdbc token store.  
 
 [NOTE]
 For simplicity, these applications use embedded hsqldb datasources. For this reason, oauth2 security will NOT work unless 
@@ -24,12 +30,19 @@ IMPORTANT: Please note that the Tomcat ports *MUST* match the ports on each appl
 *Tomcat* - If you prefer not to use the embedded Tomcat, you will need to download https://tomcat.apache.org/download-80.cgi[Tomcat] 
 and run two separate instances. One on port 8080 and another on port 8081.
 
+== Discovery Service
+
+Eureka Server with a dashboard to view registered clients. The dashboard UI is a copy of the original Spring dashboard with 
+minor CSS customizations.
+
+http://localhost:8081/discovery
+
 == Gateway Service
 
 To access services through the gateway, you must specify the service name and the URI (including root context path) 
 in the form http://hostname:port/{gateway-context}/{service-id}/{service-context}/{resource-uri} 
 
-For example, to call /uaa/token through the gateway, the url would be +
+For example, to call /uaa/oauth/token through the gateway, the url would be +
 http://localhost:8080/api/uaa-service/uaa/oauth/token?grant_type=password&username=elvis&password=password
 
 == Oauth2 Service
@@ -38,7 +51,7 @@ Simple implementation of an Oauth2 server using Spring Security Oauth2 and JDBC 
 
 Usage: +
 ```ruby 
-curl -X POST -H "Authorization: Basic ZWx2aXM6bm92b2E=" "http://localhost:8082/uaa/oauth/token?grant_type=password&username=elvis&password=password"
+curl -X POST -H 'Authorization: Basic ZWx2aXM6bm92b2E='  'http://localhost:8082/uaa/oauth/token?grant_type=password&username=elvis&password=password'
 ```
 
 Where client id is 'elvis' and client secret is 'novoa'.
@@ -50,18 +63,33 @@ Provides access to CRUD operations for a Customer entity on a database using Spr
 Usage: +
 *Get Customer list* +
 ```ruby
-curl "http://localhost:8083/frontend-customers/customers/"
+curl -X GET 'http://localhost:8083/frontend-customers/customers/'
 ``` 
 *Add Customer* +
 ```ruby
-curl -X POST -H "Content-Type: application/json" 
--d '{ +
+curl -X POST -H 'Content-Type: application/json' 
+-d '{ 
    "firstName": "Frodo", 
    "lastName": "Baggins", 
    "dateOfBirth": "2016-03-29" 
 }' "http://localhost:8083/frontend-customers/customers"
 ```
 
+== Backend Account Service
+
+A single RESTController serving random accounts. Showcases the use of custom Media Types to handle API versions 
+and Springfox Swagger to document the service endpoints. In reality, this could be a wrapper of another service in
+the backend (ie. mainframe, middleware, appliance, etc).
+
+Swagger UI:
+http://localhost:8084/backend-accounts/documentation/swagger-ui.html
+
+Usage:
+```ruby
+curl -X GET --header 'Accept: application/vnd.sample.account.v1+json' 'http://localhost:8084/backend-accounts/'
+```
+
 == License
+
 This project is Open Source software released under the
 http://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].

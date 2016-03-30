@@ -17,6 +17,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<org.springframework.cloud.release-train>Brixton.M5</org.springframework.cloud.release-train>
+		<io.springfox.version>2.4.0</io.springfox.version>
+		<uk.co.jemos.podam.version>6.0.2.RELEASE</uk.co.jemos.podam.version>
 	</properties>
 
 	<dependencyManagement>
@@ -27,6 +29,21 @@
 				<version>${org.springframework.cloud.release-train}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${io.springfox.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${io.springfox.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>uk.co.jemos.podam</groupId>
+				<artifactId>podam</artifactId>
+				<version>${uk.co.jemos.podam.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -47,5 +64,6 @@
 		<module>discovery-microservice</module>
 		<module>oauth2-microservice</module>
 		<module>frontend-customer-microservice</module>
+		<module>backend-account-microservice</module>
 	</modules>
 </project>
