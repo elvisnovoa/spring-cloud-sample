@@ -37,7 +37,6 @@ public class CompositeController {
 		CustomerResponse customer = this.restTemplate.getForObject(customersEndpoint + "/customers/" + id,
 				CustomerResponse.class);
 
-		customer.setId(id);
 		if (customerRequest.isIncludeAccounts()) {
 			// Set the Accept header to V1 for simplicity
 			HttpHeaders headers = new HttpHeaders();

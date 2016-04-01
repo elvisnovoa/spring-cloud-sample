@@ -104,6 +104,13 @@ curl -X POST -H 'Content-Type: application/json' -d '{
 }' 'http://localhost:8085/composite/loadCustomer'
 ```
 
+== Client UI
+
+A minimalist UI that consumes the microservices through the Gateway Service. Naturally, in order for the client to work, the entire cloud must be up and running. 
+This project showcases UI technologies like Handlebars.js, FlightJS and Semantic UI.
+
+http://localhost:8086/client-ui/
+
 == License
 
 This project is Open Source software released under the

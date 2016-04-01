@@ -3,12 +3,14 @@ package com.sample.cloud.customers.config;
 import java.util.List;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.sample.cloud.customers.resource.Customer;
 
 @Configuration
 public class RestConfig extends RepositoryRestMvcConfiguration {
@@ -19,5 +21,10 @@ public class RestConfig extends RepositoryRestMvcConfiguration {
 		// Enable Java 8 LocalDate formatting
 		builder.featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 		converters.add(new MappingJackson2HttpMessageConverter(builder.build()));
+	}
+
+	@Override
+	protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
+		config.exposeIdsFor(Customer.class);
 	}
 }

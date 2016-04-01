@@ -1,0 +1,42 @@
+{{#if customer}}
+  <form class="ui form" method="post" id="edit-customer-form" action="/client-ui/editCustomer/{{customer.id}}">
+    <p>Enter Customer information</p>
+    <div class="two fields">
+  	  <div class="field">
+  	    <label>First Name</label> <input placeholder="First Name" name="firstName" type="text" value="{{customer.firstName}}">
+  	  </div>
+  	  <div class="field">
+  	    <label>Last Name</label> <input placeholder="Last Name" name="lastName" type="text" value="{{customer.lastName}}">
+  	  </div>
+  	</div>
+  	<div class="field">
+  	  <label>Date of Birth</label> <input placeholder="Date of Birth" name="dateOfBirth" type="text" value="{{customer.dateOfBirth}}">
+  	</div>
+  	<div class="ui error message"></div>
+  </form>
+  {{#if customer.accounts}}
+    <table class="ui right aligned table">
+	  <thead>
+	    <tr>
+	      <th class="left aligned">ID</th>
+	      <th>Account Number</th>
+	      <th>Created Date</th>
+	      <th>Balance</th>
+	    </tr>
+	  </thead>
+      <tbody>
+        {{#each customer.accounts}}
+          <tr>
+            <td class="left aligned">{{id}}</td>
+            <td>{{accountNumber}}</td>
+            <td>{{createdDate}}</td>
+            <td>{{balance}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <br/>
+  {{/if}}
+{{else}}
+  <div class="ui error message">Error getting customer information</div>
+{{/if}}

@@ -9,12 +9,21 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.sample.cloud.customers.resource.Customer;
 
+/**
+ * DAO/Controller with fundamental CRUD operations and additional searching
+ * methods.
+ *
+ * @author ednovoa
+ *
+ */
 @RepositoryRestResource(collectionResourceRel = "customers", path = "customers")
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
 
 	/**
-	 * This method translates to the following query:
-	 * 
+	 * This method translated to a query using keywords. See
+	 * http://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.
+	 * query-methods.query-creation
+	 *
 	 * @param name
 	 * @return a list of Customers matching the query
 	 */
@@ -22,7 +31,7 @@ public interface CustomerRepository extends PagingAndSortingRepository<Customer,
 
 	/**
 	 * Executes the value of the @Query annotation.
-	 * 
+	 *
 	 * @param name
 	 * @return a list of Customers matching the query
 	 */

@@ -66,5 +66,6 @@
 		<module>frontend-customer-microservice</module>
 		<module>backend-account-microservice</module>
 		<module>composite-service</module>
+		<module>client-ui</module>
 	</modules>
 </project>

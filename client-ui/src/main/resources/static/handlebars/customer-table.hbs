@@ -1,0 +1,33 @@
+<table class="ui right aligned table">
+  <thead>
+    <tr>
+      <th class="left aligned">ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Date of Birth</th>
+      <th><a><i class="add user icon js-add-customer-modal"></a></th>
+    </tr>
+  </thead>
+  <tbody>					
+    {{#if customers}}
+      {{#each customers}}
+        <tr>
+          <td class="left aligned">{{id}}</td>
+          <td>{{firstName}}</td>
+          <td>{{lastName}}</td>
+          <td>{{dateOfBirth}}</td>
+          <td>
+            <a href="customer-edit.html?id={{id}}"><i class="edit icon"></i></i></a>
+            <a href="deleteCustomer/{{id}}"><i class="remove user icon"></i></a>
+          </td>
+        </tr>
+      {{/each}}
+    {{else}}
+      <tr>
+        <td>No data</td>
+      </tr>
+    {{/if}}
+  </tbody>
+</table>
+
+<script src="js/flight/customers-add.js"></script>
