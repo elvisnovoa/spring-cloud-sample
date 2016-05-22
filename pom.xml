@@ -8,25 +8,26 @@
 	<packaging>pom</packaging>
 
 	<parent>
-		<groupId>org.springframework.cloud</groupId>
-		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Brixton.M5</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.3.5.RELEASE</version>
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<org.springframework.cloud.release-train>Brixton.M5</org.springframework.cloud.release-train>
+		<org.springframework.cloud.release-train>Brixton.RELEASE</org.springframework.cloud.release-train>
 		<io.springfox.version>2.4.0</io.springfox.version>
 		<uk.co.jemos.podam.version>6.0.2.RELEASE</uk.co.jemos.podam.version>
+		<org.projectlombok.version>1.16.8</org.projectlombok.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-starter-parent</artifactId>
-				<version>${org.springframework.cloud.release-train}</version>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Brixton.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -45,19 +46,13 @@
 				<artifactId>podam</artifactId>
 				<version>${uk.co.jemos.podam.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${org.projectlombok.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>http://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 	<modules>
 		<module>api-gateway-microservice</module>
