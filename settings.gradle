@@ -1,0 +1,16 @@
+rootProject.name = 'sample-cloud-parent'
+include ':api-gateway-microservice'
+include ':discovery-microservice'
+include ':oauth2-microservice'
+include ':frontend-customer-microservice'
+include ':backend-account-microservice'
+include ':composite-service'
+include ':client-ui'
+
+project(':api-gateway-microservice').projectDir = "$rootDir/api-gateway-microservice" as File
+project(':discovery-microservice').projectDir = "$rootDir/discovery-microservice" as File
+project(':oauth2-microservice').projectDir = "$rootDir/oauth2-microservice" as File
+project(':frontend-customer-microservice').projectDir = "$rootDir/frontend-customer-microservice" as File
+project(':backend-account-microservice').projectDir = "$rootDir/backend-account-microservice" as File
+project(':composite-service').projectDir = "$rootDir/composite-service" as File
+project(':client-ui').projectDir = "$rootDir/client-ui" as File
