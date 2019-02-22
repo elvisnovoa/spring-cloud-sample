@@ -1,8 +1,0 @@
-# Spring properties
-spring:
-  application:
-    name: uaa-service  # Service registers under this name
-  jmx: 
-    default-domain: com.sample.cloud.oauth
-encrypt:
-  failOnError: false

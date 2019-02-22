@@ -1,8 +1,0 @@
-# Spring properties
-spring:
-  application:
-    name: frontendcustomers-service  # Service registers under this name
-  jmx: 
-    default-domain: com.sample.cloud.frontend.customers
-encrypt:
-  failOnError: false

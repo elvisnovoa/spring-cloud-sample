@@ -1,8 +1,0 @@
-# Spring properties
-spring:
-  application:
-    name: composite-service  # Service registers under this name
-  jmx: 
-    default-domain: com.sample.cloud.composite
-encrypt:
-  failOnError: false
